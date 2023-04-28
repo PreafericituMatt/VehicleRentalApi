@@ -6,6 +6,7 @@ using VehicleRentalData.Repositories.Interface;
 namespace VehicleRentalApi.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class CarController : Controller
     {
         private readonly ICarRepository _carRepository;
