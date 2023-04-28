@@ -14,8 +14,9 @@ namespace VehicleRentalData
         {
 
         }
-        
+
         public DbSet<Car> Cars { get; set; }
         public DbSet<Truck> Trucks { get; set; }
+        public DbSet<FuelConsumptionReport> FuelConsumptionReports { get; set; }
     }
 }

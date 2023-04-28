@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VehicleRentalData;
+using VehicleRentalData.Repositories.Implementation;
+using VehicleRentalData.Repositories.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<ITruckRepository, TruckRepository>();
 
 var app = builder.Build();
 
