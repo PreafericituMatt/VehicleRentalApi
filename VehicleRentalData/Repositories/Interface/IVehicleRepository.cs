@@ -11,5 +11,7 @@ namespace VehicleRentalData.Repositories.Interface
     {
         public Task<ServiceResponse<List<Truck>>> GetAllTrucks();
         public Task<ServiceResponse<List<Car>>> GetAllCars();
+        public Task<FuelConsumptionReport> GenerateReport(int vehicleId, int currentMileage, string customerName);
+        public void Caca(int vId, int mil, string name);
     }
 }

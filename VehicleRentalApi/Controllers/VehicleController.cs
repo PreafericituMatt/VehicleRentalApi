@@ -27,11 +27,11 @@ namespace VehicleRentalApi.Controllers
             return Ok(await _vehicleRepository.GetAllCars());
         }
 
-     //   [HttpPost("GenerateReport")]
-     //   public async Task<ActionResult<ServiceResponse<FuelConsumptionReport>>> GenerateReport()
-     //   {
-      //      re
-      //  }
+        [HttpPost]
+        public void GenerateReport(int vehicleId, int currentMileage, string customerName)
+        {
+            _vehicleRepository.Caca(vehicleId, currentMileage, customerName);
+        }
 
     }
 }

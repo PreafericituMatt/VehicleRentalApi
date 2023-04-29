@@ -15,7 +15,6 @@ namespace VehicleRentalData.Entities
         public string CustomerName { get; set; }
         public int VehicleId { get; set; }
         public bool VehicleCar { get; set; }
-        public bool VehicleTruck { get; set; }
         public int CurrentMileage { get; set; }
         public int LitersOfFuelConsumed { get; set; }
         public int DaysRented { get; set; }
