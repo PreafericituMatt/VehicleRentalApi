@@ -14,8 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ICarRepository, CarRepository>();
-builder.Services.AddScoped<ITruckRepository, TruckRepository>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+
 
 var app = builder.Build();
 

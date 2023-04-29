@@ -7,8 +7,9 @@ using VehicleRentalData.Entities;
 
 namespace VehicleRentalData.Repositories.Interface
 {
-    public interface ICarRepository
+    public interface IVehicleRepository
     {
-       public Task<ServiceResponse<List<Car>>> GetAll();
+        public Task<ServiceResponse<List<Truck>>> GetAllTrucks();
+        public Task<ServiceResponse<List<Car>>> GetAllCars();
     }
 }

@@ -9,20 +9,28 @@ using VehicleRentalData.Repositories.Interface;
 
 namespace VehicleRentalData.Repositories.Implementation
 {
-    public class CarRepository : ICarRepository
+    public class VehicleRepository : IVehicleRepository
     {
         private readonly DataContext _dbContext;
-        public CarRepository(DataContext dbContext)
+        public VehicleRepository(DataContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<ServiceResponse<List<Car>>> GetAll()
+        public async Task<ServiceResponse<List<Car>>> GetAllCars()
         {
-            return new ServiceResponse<List<Car>> 
+            return new ServiceResponse<List<Car>>
             {
                 Data = await _dbContext.Cars.ToListAsync()
             };
         }
+        public async Task<ServiceResponse<List<Truck>>> GetAllTrucks()
+        {
+            return new ServiceResponse<List<Truck>>
+            {
+                Data = await _dbContext.Trucks.ToListAsync()
+            };
+        }
+
     }
 }
