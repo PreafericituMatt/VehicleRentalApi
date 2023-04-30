@@ -36,9 +36,10 @@ namespace VehicleRentalData.Repositories.Implementation
                     report.CustomerName = name;
                     report.LitersOfFuelConsumed =((mil-verify.Result.Mileage)% verify.Result.FuelConsumption);
                     report.DaysRented = 7;
+                    
 
                     _dbContext.FuelConsumptionReports.AddAsync(report);
-                    _dbContext.SaveChangesAsync();
+                    _dbContext.SaveChanges();
                 }
             }
             else
@@ -55,22 +56,24 @@ namespace VehicleRentalData.Repositories.Implementation
                     report.DaysRented = 7;
 
                     _dbContext.FuelConsumptionReports.AddAsync(report);
-                    _dbContext.SaveChangesAsync();
+                    _dbContext.SaveChanges();
                 }
             }
-        }
-
-        public Task<FuelConsumptionReport> GenerateReport(int vehicleId, int currentMileage, string customerName)
-        {
-
-            throw new NotImplementedException();
-        }
+        }     
 
         public async Task<ServiceResponse<List<Car>>> GetAllCars()
         {
             return new ServiceResponse<List<Car>>
             {
                 Data = await _dbContext.Cars.ToListAsync()
+            };
+        }
+
+        public async Task<ServiceResponse<List<FuelConsumptionReport>>> GetAllReports()
+        {
+            return new ServiceResponse<List<FuelConsumptionReport>>
+            {
+                Data = await _dbContext.FuelConsumptionReports.ToListAsync()
             };
         }
 
@@ -81,7 +84,5 @@ namespace VehicleRentalData.Repositories.Implementation
                 Data = await _dbContext.Trucks.ToListAsync()
             };
         }
-
-
     }
 }

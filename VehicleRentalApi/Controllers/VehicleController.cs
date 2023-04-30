@@ -33,5 +33,11 @@ namespace VehicleRentalApi.Controllers
             _vehicleRepository.Caca(vehicleId, currentMileage, customerName, isCar);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<FuelConsumptionReport>> GetAllReports() 
+        {
+            return Ok(await _vehicleRepository.GetAllReports());
+        }
+
     }
 }
