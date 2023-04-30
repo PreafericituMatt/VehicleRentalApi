@@ -28,9 +28,9 @@ namespace VehicleRentalApi.Controllers
         }
 
         [HttpPost]
-        public void GenerateReport(int vehicleId, int currentMileage, string customerName)
+        public void GenerateReport(int vehicleId, int currentMileage, string customerName, bool isCar)
         {
-            _vehicleRepository.Caca(vehicleId, currentMileage, customerName);
+            _vehicleRepository.Caca(vehicleId, currentMileage, customerName, isCar);
         }
 
     }

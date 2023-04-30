@@ -20,15 +20,50 @@ namespace VehicleRentalData.Repositories.Implementation
             _mapper = mapper;
         }
 
-        public void Caca(int vId, int mil, string name)
+        public void Caca(int vId, int mil, string name, bool isCar)
         {
-            throw new NotImplementedException();
+            FuelConsumptionReport report = new();
+
+            if (isCar)
+            {
+                var verify = _dbContext.Cars.Where(c => c.Id == vId).FirstOrDefaultAsync();
+                
+                if (verify != null)
+                {
+                    report.CurrentMileage = mil;
+                    report.VehicleCar = true;
+                    report.VehicleId = vId;
+                    report.CustomerName = name;
+                    report.LitersOfFuelConsumed =((mil-verify.Result.Mileage)% verify.Result.FuelConsumption);
+                    report.DaysRented = 7;
+
+                    _dbContext.FuelConsumptionReports.AddAsync(report);
+                    _dbContext.SaveChangesAsync();
+                }
+            }
+            else
+            {
+                var verify = _dbContext.Trucks.Where(c => c.Id == vId).FirstOrDefaultAsync();
+
+                if (verify != null)
+                {
+                    report.CurrentMileage = mil;
+                    report.VehicleCar = false;
+                    report.VehicleId = vId;
+                    report.CustomerName = name;
+                    report.LitersOfFuelConsumed = ((mil - verify.Result.Mileage) % verify.Result.FuelConsumption);
+                    report.DaysRented = 7;
+
+                    _dbContext.FuelConsumptionReports.AddAsync(report);
+                    _dbContext.SaveChangesAsync();
+                }
+            }
         }
 
         public Task<FuelConsumptionReport> GenerateReport(int vehicleId, int currentMileage, string customerName)
         {
-           
-              throw new NotImplementedException();
+
+            throw new NotImplementedException();
         }
 
         public async Task<ServiceResponse<List<Car>>> GetAllCars()
