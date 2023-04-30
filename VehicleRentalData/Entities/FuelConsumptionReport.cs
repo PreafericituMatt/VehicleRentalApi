@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VehicleRentalData.Entities
 {
@@ -12,7 +7,7 @@ namespace VehicleRentalData.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
         public int VehicleId { get; set; }
         public bool VehicleCar { get; set; }
         public int CurrentMileage { get; set; }
